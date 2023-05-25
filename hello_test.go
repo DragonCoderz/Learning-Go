@@ -12,7 +12,7 @@ func TestHello(t *testing.T) { //t of type *testing.T is our door into the testi
 
 	//Here is how you do subtests - subtests should be designed to test some specific aspect of our code
 	t.Run("saying hello to people", func(t *testing.T) {
-		got := Hello("Chris") //variables are declared by :=
+		got := Hello("Chris", "") //variables are declared by := but are changed with =
 		want := "Hello, Chris"
 
 		assertCorrectMessage(t, got, want)
@@ -20,9 +20,20 @@ func TestHello(t *testing.T) { //t of type *testing.T is our door into the testi
 	//passing the *testing.T object to t.Run, you enable the subtest to communicate its failures, log additional information,
 	//and control its execution. This helps in providing accurate test results and facilitating the debugging process.
 	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "")
 		want := "Hello, World"
 
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Spanish", func(t *testing.T) {
+		got := Hello("Elodie", "Spanish")
+		want := "Hola, Elodie"
+		assertCorrectMessage(t, got, want)
+	})
+	t.Run("in French", func(t *testing.T) {
+		got := Hello("Jean-Marie", "French")
+		want := "Bonjour, Jean-Marie"
 		assertCorrectMessage(t, got, want)
 	})
 }

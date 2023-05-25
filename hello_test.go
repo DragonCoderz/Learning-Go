@@ -10,10 +10,25 @@ import "testing"
 func TestHello(t *testing.T) { //t of type *testing.T is our door into the testing package which gives us
 	//access to all sorts of testing functions like FAIL
 
-	//variables are declared by :=
-	got := Hello("Chris")
-	want := "Hello, Chris"
+	//Here is how you do subtests - subtests should be designed to test some specific aspect of our code
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris") //variables are declared by :=
+		want := "Hello, Chris"
 
+		assertCorrectMessage(t, got, want)
+	})
+	//passing the *testing.T object to t.Run, you enable the subtest to communicate its failures, log additional information,
+	//and control its execution. This helps in providing accurate test results and facilitating the debugging process.
+	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World"
+
+		assertCorrectMessage(t, got, want)
+	})
+}
+
+func assertCorrectMessage(t testing.TB, got, want string) { // t being of type testing.TB means that it is able to call both Testing methods and Benchmark methods
+	t.Helper() //Signfities that this is a helper function to our compiler
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
 	}

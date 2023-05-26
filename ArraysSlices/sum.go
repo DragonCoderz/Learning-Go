@@ -39,3 +39,4 @@ func SumAllTails(numbersToSum ...[]int) []int {
 	}
 	return sums
 }
+//Testing things

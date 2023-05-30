@@ -17,6 +17,7 @@ type Rectangle struct {
 }
 
 //This is a method specific to the rectangle struct
+//A method is a function with a receiver. A method declaration binds an identifier, the method name, to a method, and associates the method with the receiver's base type.
 func (r Rectangle) Area() float64 {
 	return r.Width * r.Height
 }

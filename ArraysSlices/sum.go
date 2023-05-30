@@ -1,3 +1,4 @@
+// More important information on slices here: https://go.dev/blog/slices-intro
 package main
 
 func Sum(numbers []int) int {
@@ -39,4 +40,5 @@ func SumAllTails(numbersToSum ...[]int) []int {
 	}
 	return sums
 }
+
 //Testing things

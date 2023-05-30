@@ -24,6 +24,7 @@ func TestSum(t *testing.T) {
 	})
 
 	t.Run("collection of any size", func(t *testing.T) {
+		//This is a slice
 		numbers := []int{1, 2, 3}
 		got := Sum(numbers)
 		want := 6
